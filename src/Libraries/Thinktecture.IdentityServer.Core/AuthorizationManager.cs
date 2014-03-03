@@ -56,6 +56,8 @@ namespace Thinktecture.IdentityServer
                     return AuthorizeTokenIssuance(resource, id);
                 case Constants.Actions.Administration:
                     return AuthorizeAdministration(resource, id);
+                case Constants.Actions.WebApi:
+                    return AuthorizeWebApi(resource, id);
             }
 
             return false;
@@ -90,6 +92,19 @@ namespace Thinktecture.IdentityServer
                 if (resource[0].Value != Constants.Resources.UI)
                 {
                     Tracing.Error(string.Format("Administration authorization failed because user {0} is not in the {1} role", id.Name, Constants.Roles.IdentityServerAdministrators));
+                }
+            }
+
+            return roleResult;
+        }
+        protected virtual bool AuthorizeWebApi(Collection<Claim> resource, ClaimsIdentity id)
+        {
+            var roleResult = id.HasClaim(ClaimTypes.Role, Constants.Roles.WebApi);
+            if (!roleResult)
+            {
+                if (resource[0].Value != Constants.Resources.UI)
+                {
+                    Tracing.Error(string.Format("Web Api authorization failed because user {0} is not in the {1} role", id.Name, Constants.Roles.WebApi));
                 }
             }
 

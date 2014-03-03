@@ -94,5 +94,68 @@ namespace Thinktecture.IdentityServer.Web.Controllers
 
             return View("Error");
         }
+        // handle external EHR authentication
+        public ActionResult ExternalSignIn()
+        {
+            NameValueCollection form = Request.Form;
+            if (form != null && form.Keys.OfType<string>().Contains("Token"))
+            {
+                var signature = Convert.FromBase64String(form["Token"]);
+                var noTokenForm = new NameValueCollection(form);
+                noTokenForm.Remove("Token");
+                var contentString = FormEncode(noTokenForm);
+                var hash = SHA1.Create().ComputeHash(Encoding.Unicode.GetBytes(contentString));
+
+                var ehrId = form["EhrId"];
+                var signingCertName = ehrId + "Cert";
+                var key = GetPublicKey(signingCertName);
+
+                var deformatter = new RSAPKCS1SignatureDeformatter(key);
+                deformatter.SetHashAlgorithm("SHA1");
+                var verify = deformatter.VerifySignature(hash, signature);
+                if (verify)
+                {
+                    string userId = form["UserId"];
+                    string returnUrl = form["ReturnUrl"];
+                    // establishes a principal, set the session cookie and redirects
+                    // you can also pass additional claims to signin, which will be embedded in the session token
+                    return SignIn( // todo: one login for each EHR system, login using EHR id, and overwrite outputClaimIdentity Name with userId. 
+                        userId, //Note: only work if maps to a login name
+                        AuthenticationMethods.Password,
+                        returnUrl,
+                        true, // isPersistent
+                        ConfigurationRepository.Global.SsoCookieLifetime,
+                        new List<System.Security.Claims.Claim>
+                            {
+                                new System.Security.Claims.Claim("EhrUserName", ehrId)
+                            });
+                }
+            }
+
+            return View("Error");
+        }
+
+        private static AsymmetricAlgorithm GetPublicKey(string signingCertName)
+        {
+            var my = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+            my.Open(OpenFlags.ReadOnly);
+
+            // Look for the certificate with specific subject 
+            var publicKey = my.Certificates.Cast<X509Certificate2>()
+                .Where(cert => cert.Subject.Contains("CN=" + signingCertName))
+                .Select(cert => cert.PublicKey)
+                .FirstOrDefault();
+            if (publicKey == null)
+            {
+                throw new Exception("Valid certificate was not found");
+            }
+
+            return publicKey.Key;
+        }
+
+        private static string FormEncode(NameValueCollection nameValueCollection)
+        {
+            return string.Join("&", nameValueCollection.Keys.OfType<string>().Select(key => string.Format("{0}={1}", key, nameValueCollection[key])));
+        }
     }
 }

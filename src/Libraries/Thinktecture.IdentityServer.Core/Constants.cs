@@ -23,6 +23,7 @@ namespace Thinktecture.IdentityServer
         {
             public const string Issue          = "Issue";
             public const string Administration = "Administration";
+            public const string WebApi = "WebApi";
         }
 
         public static class Resources
@@ -53,6 +54,7 @@ namespace Thinktecture.IdentityServer
 
             public const string IdentityServerUsers          = InternalRolesPrefix + Users;
             public const string IdentityServerAdministrators = InternalRolesPrefix + Administrators;
+            public const string WebApi = "WebApi";
         }
 
         public static class CacheKeys
