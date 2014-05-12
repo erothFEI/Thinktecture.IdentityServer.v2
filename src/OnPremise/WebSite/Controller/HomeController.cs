@@ -12,7 +12,7 @@ using Thinktecture.IdentityServer.Repositories;
 
 namespace Thinktecture.IdentityServer.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : System.Web.Mvc.Controller
     {
         [Import]
         public IConfigurationRepository Configuration { get; set; }

@@ -22,14 +22,14 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SignIn_cshtml {
+    public class ForgotPassword_cshtml {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SignIn_cshtml() {
+        internal ForgotPassword_cshtml() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Thinktecture.IdentityServer.Web.App_LocalResources.Account.SignIn.cshtml", typeof(SignIn_cshtml).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Thinktecture.IdentityServer.Web.App_LocalResources.Account.ForgotPassword.cshtml", typeof(ForgotPassword_cshtml).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,16 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to You cannot reset your password please contact your administrator..
+        /// </summary>
+        public static string CannotReset {
+            get {
+                return ResourceManager.GetString("CannotReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password.
         /// </summary>
         public static string ForgotPassword {
             get {
@@ -70,56 +79,29 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to Invalid Response..
         /// </summary>
-        public static string Login {
+        public static string InvalidResponse {
             get {
-                return ResourceManager.GetString("Login", resourceCulture);
+                return ResourceManager.GetString("InvalidResponse", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign In.
+        ///   Looks up a localized string similar to Unknown error..
         /// </summary>
-        public static string SignIn {
+        public static string UnknownError {
             get {
-                return ResourceManager.GetString("SignIn", resourceCulture);
+                return ResourceManager.GetString("UnknownError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign In was unsuccessful. Please correct the errors and try again..
+        ///   Looks up a localized string similar to Unknown user..
         /// </summary>
-        public static string SignInWasUnsuccessful {
+        public static string UnknownUser {
             get {
-                return ResourceManager.GetString("SignInWasUnsuccessful", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You are currently logged in as {0}, but you requested a resource that you were not authorized for. Either provide credentials that do have access or contact your administrator to grant you access..
-        /// </summary>
-        public static string UnauthorizedAuthenticatedUser {
-            get {
-                return ResourceManager.GetString("UnauthorizedAuthenticatedUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use client certificate.
-        /// </summary>
-        public static string UseClientCertificate {
-            get {
-                return ResourceManager.GetString("UseClientCertificate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Username / Password Sign In.
-        /// </summary>
-        public static string UsernamePasswordSignIn {
-            get {
-                return ResourceManager.GetString("UsernamePasswordSignIn", resourceCulture);
+                return ResourceManager.GetString("UnknownUser", resourceCulture);
             }
         }
     }

@@ -37,6 +37,7 @@ namespace Thinktecture.IdentityServer.Web.Controller.Api
     using System.Net.Http;
     using System.Net.Mail;
     using System.Text;
+    using System.Web;
     using System.Web.Configuration;
     using System.Web.Http;
     using System.Web.Security;
@@ -280,10 +281,10 @@ namespace Thinktecture.IdentityServer.Web.Controller.Api
             }
         }
 
-        private static void SendEmailNotification(MembershipUser user, string password)
+        public static void SendEmailNotification(MembershipUser user, string password)
         {
             var fullname = user.UserName;
-            var emailTemplate = File.ReadAllText ( "EmailTemplate.html" );
+            var emailTemplate = File.ReadAllText ( HttpContext.Current.Server.MapPath("/EmailTemplate.html") );
             var body = string.Format(emailTemplate, fullname, user.UserName.ToLower(), password);
             using (var message = new MailMessage
                 {
@@ -300,9 +301,11 @@ namespace Thinktecture.IdentityServer.Web.Controller.Api
                     message.CC.Add(new MailAddress(cc));
                 }
 
-                var smtp = new SmtpClient();
-                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                smtp.Send(message);
+                using ( var smtp = new SmtpClient() )
+                {
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                    smtp.Send(message);
+                }
             }
         }
 

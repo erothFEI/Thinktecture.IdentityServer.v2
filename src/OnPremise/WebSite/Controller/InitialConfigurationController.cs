@@ -17,7 +17,7 @@ using Thinktecture.IdentityServer.Web.ViewModels;
 
 namespace Thinktecture.IdentityServer.Web.Controllers
 {
-    public class InitialConfigurationController : Controller
+    public class InitialConfigurationController : System.Web.Mvc.Controller
     {
         [Import]
         public IConfigurationRepository ConfigurationRepository { get; set; }

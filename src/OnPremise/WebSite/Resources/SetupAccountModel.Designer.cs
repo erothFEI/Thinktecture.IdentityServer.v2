@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
+namespace Thinktecture.IdentityServer.Web.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SignIn_cshtml {
+    public class SetupAccountModel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SignIn_cshtml() {
+        internal SetupAccountModel() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Thinktecture.IdentityServer.Web.App_LocalResources.Account.SignIn.cshtml", typeof(SignIn_cshtml).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Thinktecture.IdentityServer.Web.Resources.SetupAccountModel", typeof(SetupAccountModel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,20 @@ namespace Thinktecture.IdentityServer.Web.App_LocalResources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
-        public static string ForgotPassword {
+        public static string ConfirmPassword {
             get {
-                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to New Password.
         /// </summary>
-        public static string Login {
+        public static string NewPassword {
             get {
-                return ResourceManager.GetString("Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sign In.
-        /// </summary>
-        public static string SignIn {
-            get {
-                return ResourceManager.GetString("SignIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sign In was unsuccessful. Please correct the errors and try again..
-        /// </summary>
-        public static string SignInWasUnsuccessful {
-            get {
-                return ResourceManager.GetString("SignInWasUnsuccessful", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You are currently logged in as {0}, but you requested a resource that you were not authorized for. Either provide credentials that do have access or contact your administrator to grant you access..
-        /// </summary>
-        public static string UnauthorizedAuthenticatedUser {
-            get {
-                return ResourceManager.GetString("UnauthorizedAuthenticatedUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use client certificate.
-        /// </summary>
-        public static string UseClientCertificate {
-            get {
-                return ResourceManager.GetString("UseClientCertificate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Username / Password Sign In.
-        /// </summary>
-        public static string UsernamePasswordSignIn {
-            get {
-                return ResourceManager.GetString("UsernamePasswordSignIn", resourceCulture);
+                return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
     }

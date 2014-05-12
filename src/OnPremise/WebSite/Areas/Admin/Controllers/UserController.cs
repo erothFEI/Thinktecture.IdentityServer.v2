@@ -10,7 +10,7 @@ using Thinktecture.IdentityServer.Web.Areas.Admin.ViewModels;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class UserController : Controller
+    public class UserController : System.Web.Mvc.Controller
     {
         [Import]
         public IUserManagementRepository UserManagementRepository { get; set; }

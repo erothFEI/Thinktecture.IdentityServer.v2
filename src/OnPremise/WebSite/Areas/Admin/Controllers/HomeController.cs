@@ -6,7 +6,7 @@ using Thinktecture.IdentityModel.Authorization.Mvc;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class HomeController : Controller
+    public class HomeController : System.Web.Mvc.Controller
     {
         //
         // GET: /Admin/Home/

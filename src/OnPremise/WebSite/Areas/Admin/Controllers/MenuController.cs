@@ -9,7 +9,7 @@ using Thinktecture.IdentityServer.Web.Areas.Admin.ViewModels;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class MenuController : Controller
+    public class MenuController : System.Web.Mvc.Controller
     {
         [Import]
         public IConfigurationRepository ConfigurationRepository { get; set; }

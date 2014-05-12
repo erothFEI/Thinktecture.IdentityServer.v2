@@ -11,7 +11,7 @@ using Thinktecture.IdentityServer.Web.Areas.Admin.ViewModels;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class RPController : Controller
+    public class RPController : System.Web.Mvc.Controller
     {
         [Import]
         public IRelyingPartyRepository RelyingPartyRepository { get; set; }

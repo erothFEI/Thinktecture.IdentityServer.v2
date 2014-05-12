@@ -11,7 +11,7 @@ using Thinktecture.IdentityServer.Web.Areas.Admin.ViewModels;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class OpenIdConnectClientController : Controller
+    public class OpenIdConnectClientController : System.Web.Mvc.Controller
     {
         [Import]
         public IOpenIdConnectClientsRepository repository { get; set; }

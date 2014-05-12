@@ -8,7 +8,7 @@ using Thinktecture.IdentityServer.Repositories;
 namespace Thinktecture.IdentityServer.Web.Areas.Admin.Controllers
 {
     [ClaimsAuthorize(Constants.Actions.Administration, Constants.Resources.Configuration)]
-    public class GeneralController : Controller
+    public class GeneralController : System.Web.Mvc.Controller
     {
         [Import]
         public IConfigurationRepository ConfigurationRepository { get; set; }

@@ -12,6 +12,11 @@ using Thinktecture.IdentityServer.Repositories.Sql;
 
 namespace Thinktecture.IdentityServer.Web
 {
+    using System;
+    using System.IdentityModel.Services;
+    using System.Security.Cryptography;
+    using App_Start;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         [Import]
@@ -48,6 +53,28 @@ namespace Thinktecture.IdentityServer.Web
         private void SetupCompositionContainer()
         {
             Container.Current = new CompositionContainer(new RepositoryExportProvider());
+        }
+
+        protected void Application_Error ( object sender, EventArgs e )
+        {
+            var exception = Server.GetLastError ();
+            if ( exception is CryptographicException )
+            {
+                var federationAuthenticationModule = FederatedAuthentication.WSFederationAuthenticationModule ?? new WSFederationAuthenticationModule();
+
+                federationAuthenticationModule.SignOut(false);
+
+                var message = WSFederationMessage.CreateFromUri(System.Web.HttpContext.Current.Request.Url);
+
+                // sign in 
+                var signinMessage = message as SignInRequestMessage;
+                if (signinMessage != null)
+                {
+                    var signoutMessage = new SignOutRequestMessage(new Uri(signinMessage.RequestUrl),
+                                                     signinMessage.Realm);
+                    System.Web.HttpContext.Current.Response.Redirect(signoutMessage.WriteQueryString());
+                }
+            }
         }
     }
 }
