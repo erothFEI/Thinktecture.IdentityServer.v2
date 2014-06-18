@@ -99,12 +99,12 @@ namespace Thinktecture.IdentityServer
         }
         protected virtual bool AuthorizeWebApi(Collection<Claim> resource, ClaimsIdentity id)
         {
-            var roleResult = id.HasClaim(ClaimTypes.Role, Constants.Roles.WebApi);
+            var roleResult = id.HasClaim(ClaimTypes.Role, Constants.Roles.IdentityServerWebApiUsers);
             if (!roleResult)
             {
                 if (resource[0].Value != Constants.Resources.UI)
                 {
-                    Tracing.Error(string.Format("Web Api authorization failed because user {0} is not in the {1} role", id.Name, Constants.Roles.WebApi));
+                    Tracing.Error(string.Format("Web Api authorization failed because user {0} is not in the {1} role", id.Name, Constants.Roles.IdentityServerWebApiUsers));
                 }
             }
 

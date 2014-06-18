@@ -141,6 +141,15 @@ namespace Thinktecture.IdentityServer.Web.Controllers
                 errors.Add(ex.Message);
             }
 
+            try
+            {
+                UserManagement.CreateRole(Constants.Roles.IdentityServerWebApiUsers);
+            }
+            catch (Exception ex)
+            {
+                errors.Add(ex.Message);
+            }
+
             if (errors.Count != 0)
             {
                 return errors;

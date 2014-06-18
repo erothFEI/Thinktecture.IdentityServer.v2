@@ -50,11 +50,12 @@ namespace Thinktecture.IdentityServer
         {
             public const string InternalRolesPrefix          = "IdentityServer";
             public const string Users                        = "Users";
-            public const string Administrators               = "Administrators";
+            public const string Administrators = "Administrators";
+            public const string WebApiUsers = "WebApi";
 
             public const string IdentityServerUsers          = InternalRolesPrefix + Users;
             public const string IdentityServerAdministrators = InternalRolesPrefix + Administrators;
-            public const string WebApi = "WebApi";
+            public const string IdentityServerWebApiUsers = WebApiUsers;
         }
 
         public static class CacheKeys

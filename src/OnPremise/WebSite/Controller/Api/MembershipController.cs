@@ -284,7 +284,7 @@ namespace Thinktecture.IdentityServer.Web.Controller.Api
         public static void SendEmailNotification(MembershipUser user, string password)
         {
             var fullname = user.UserName;
-            var emailTemplate = File.ReadAllText ( HttpContext.Current.Server.MapPath("/EmailTemplate.html") );
+            var emailTemplate = File.ReadAllText ( HttpContext.Current.Server.MapPath("~/EmailTemplate.html") );
             var body = string.Format(emailTemplate, fullname, user.UserName.ToLower(), password);
             using (var message = new MailMessage
                 {
