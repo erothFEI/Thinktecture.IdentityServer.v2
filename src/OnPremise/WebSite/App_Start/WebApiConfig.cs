@@ -54,7 +54,7 @@ namespace Thinktecture.IdentityServer.Web.App_Start
             //config.MessageHandlers.Add(new AuthenticationHandler(authentication));
 
             var authentificationhandler = new AuthenticationHandler(new IdentityServerHttpAuthentication(authentication, configurationRepository), config);
-            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}/{username}", new {username = RouteParameter.Optional}, null, authentificationhandler);
+            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}/{email}", new { email = RouteParameter.Optional }, null, authentificationhandler);
         }
 
         private static AuthenticationConfiguration CreateAuthenticationConfiguration(IConfigurationRepository configurationRepository)
